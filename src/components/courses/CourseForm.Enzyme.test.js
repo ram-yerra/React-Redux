@@ -1,0 +1,34 @@
+import React from "react";
+import CourseForm from "./CourseForm";
+import { shallow } from "enzyme";
+
+function renderCourseForm(args) {
+    const defaultProps = {
+        authors: [],
+        course: {},
+        saving: false,
+        errors: {},
+        onSave: () => {},
+        onChange: () =>{}
+    };
+
+    const props = { ...defaultProps, ...args };
+    return shallow(<CourseForm {...props} />);
+}
+
+it('renders form and header', () => {
+    const wrapper = renderCourseForm();
+    //console.log(wrapper.debug());
+    expect(wrapper.find("form").length).toBe(1);
+    expect(wrapper.find("h2").text()).toEqual("Add Course");
+});
+
+it('labels save to Save when save is not yet clicked', () => {
+    const wrapper = renderCourseForm();
+    expect(wrapper.find('button').text()).toBe('Save');
+});
+
+it('labels save to Saving... when save is clicked', () => {
+    const wrapper = renderCourseForm({ saving: true });
+    expect(wrapper.find('button').text()).toBe('Saving...');
+});

@@ -1,0 +1,20 @@
+#app {
+    margin: 0 auto;
+    font-size: 16px;
+    background: #eeeeee;
+    min-height: 100vh;
+    height: 100%;
+    padding: 0 95px;
+}
+
+.list-header, 
+.list-content {
+    display: flex;
+    border: 1px solid #ccc;
+}
+
+.list-header div, 
+.list-content div {
+    flex: 1;
+    padding: 10px;
+}
